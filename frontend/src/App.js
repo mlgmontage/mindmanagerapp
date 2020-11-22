@@ -1,3 +1,5 @@
+import Topics from "./components/Topics";
+
 function App() {
   return (
     <div className="container">
@@ -7,6 +9,7 @@ function App() {
         </h1>
         <h1 className="text-center">Mind Manager</h1>
       </header>
+      <Topics />
     </div>
   );
 }
