@@ -1,4 +1,5 @@
 import topicsList from "../data/topics";
+import marked from "marked";
 
 function Topics() {
   return (
@@ -8,7 +9,11 @@ function Topics() {
         {topicsList.map((topic) => (
           <div className="list-group-item" key={topic._id}>
             <a className="text-dark text-decoration-none p-3" href="#">
-              <div>{topic.markdown}</div>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: marked(topic.markdown),
+                }}
+              ></div>
             </a>
             <small className="text-right text-muted">{topic.date}</small>
           </div>
