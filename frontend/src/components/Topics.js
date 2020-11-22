@@ -1,5 +1,6 @@
 import topicsList from "../data/topics";
 import marked from "marked";
+import moment from "moment";
 
 function Topics() {
   return (
@@ -15,7 +16,9 @@ function Topics() {
                 }}
               ></div>
             </a>
-            <small className="text-right text-muted">{topic.date}</small>
+            <small className="text-right text-muted">
+              {moment(topic.date).fromNow()}
+            </small>
           </div>
         ))}
       </div>
