@@ -1,6 +1,9 @@
-function TopicForm() {
+function TopicForm(props) {
   return (
-    <form className="col-md-10 m-auto">
+    <form
+      style={{ display: props.show ? "block" : "none" }}
+      className="col-md-10 m-auto py-4"
+    >
       <div className="mb-3">
         <label className="form-label" htmlFor="MarkDownText">
           Markdown text
