@@ -4,19 +4,18 @@ function Topics() {
       <h3 className="py-3">Topics</h3>
       <div className="list-group">
         <div className="list-group-item">
-          <a className="text-dark" href="#">
-            Random
+          <a className="text-dark text-decoration-none p-3" href="#">
+            <h1>Hello world</h1>
+            <p>Mind manager</p>
           </a>
+          <small className="text-right text-muted">2 minutes ago</small>
         </div>
         <div className="list-group-item">
-          <a className="text-dark" href="#">
-            Chess
+          <a className="text-dark text-decoration-none p-3 " href="#">
+            <h1>Title</h1>
+            <p>Content</p>
           </a>
-        </div>
-        <div className="list-group-item">
-          <a className="text-dark" href="#">
-            App ideas
-          </a>
+          <small className="text-right text-muted">2 minutes ago</small>
         </div>
       </div>
     </div>
