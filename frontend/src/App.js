@@ -1,11 +1,15 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Topics from "./components/Topics";
 import TopicForm from "./components/TopicForm";
 import topicsList from "./data/topics";
 
 function App() {
-  useEffect(() => console.log("use effect"));
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(true);
+  const [text, setText] = useState("");
+
+  const submitTopic = () => {
+    console.log(text);
+  };
 
   return (
     <div className="container">
@@ -27,7 +31,12 @@ function App() {
           </button>
         </h1>
       </header>
-      <TopicForm show={show} />
+      <TopicForm
+        text={text}
+        setText={setText}
+        show={show}
+        submitTopic={submitTopic}
+      />
 
       <Topics topicsList={topicsList} />
     </div>

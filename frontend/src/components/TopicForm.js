@@ -5,17 +5,20 @@ function TopicForm(props) {
       className="col-md-10 m-auto py-4"
     >
       <div className="mb-3">
-        <label className="form-label" htmlFor="MarkDownText">
-          Markdown text
-        </label>
         <textarea
           className="form-control"
           rows="10"
-          id="MarkDownText"
+          value={props.text}
+          onChange={(e) => props.setText(e.target.value)}
         ></textarea>
       </div>
-      <div className="btn btn-secondary btn-large">
-        Anchor! <i className="fa fa-anchor"></i>
+      <div className="text-center">
+        <div
+          onClick={props.submitTopic}
+          className="btn btn-secondary btn-large px-5"
+        >
+          Anchor! <i className="fa fa-anchor"></i>
+        </div>
       </div>
     </form>
   );
