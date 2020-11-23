@@ -3,11 +3,13 @@ const router = Router();
 const ds = require("../../connection");
 const topicSchema = require("../model/topicSchema");
 
+// Root topics
 router.get("/", async (req, res) => {
-  const topics = await ds.find({});
+  const topics = await ds.find({ parent: "" });
   res.json(topics);
 });
 
+// Sub topics
 router.get("/:id", async (req, res) => {
   const _id = req.params.id;
   const topics = await ds.find({ parent: _id });
