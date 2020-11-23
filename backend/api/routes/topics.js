@@ -8,6 +8,12 @@ router.get("/", async (req, res) => {
   res.json(topics);
 });
 
+router.get("/:id", async (req, res) => {
+  const _id = req.params.id;
+  const topics = await ds.find({ _id });
+  res.json(topics);
+});
+
 router.post("/create", async (req, res) => {
   const body = req.body;
 

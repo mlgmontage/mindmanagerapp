@@ -8,7 +8,10 @@ function Topics(props) {
       <div className="list-group">
         {props.topicsList.map((topic) => (
           <div className="list-group-item" key={topic._id}>
-            <a className="text-dark text-decoration-none p-3" href="#">
+            <a
+              className="text-dark text-decoration-none p-3"
+              href={`#${topic._id}`}
+            >
               <div
                 dangerouslySetInnerHTML={{
                   __html: marked(topic.markdown),
@@ -16,7 +19,7 @@ function Topics(props) {
               ></div>
             </a>
             <small className="text-right text-muted">
-              {moment(topic.date).fromNow()}
+              {moment(topic.Date).fromNow()}
             </small>
           </div>
         ))}
