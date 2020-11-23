@@ -16,6 +16,14 @@ router.get("/:id", async (req, res) => {
   res.json(topics);
 });
 
+// Delete topics with subtopic
+router.delete("/:id", async (req, res) => {
+  const _id = req.params.id;
+  const subtopics = await ds.remove({ parent: _id }, { multi: true });
+  const topics = await ds.remove({ _id });
+  res.json({ message: "deleted" });
+});
+
 router.post("/create", async (req, res) => {
   const body = req.body;
 
