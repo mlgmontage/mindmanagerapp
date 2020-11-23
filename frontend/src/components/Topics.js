@@ -11,6 +11,7 @@ function Topics(props) {
             <a
               className="text-dark text-decoration-none p-3"
               href={`#${topic._id}`}
+              onClick={props.fetchTopics}
             >
               <div
                 dangerouslySetInnerHTML={{

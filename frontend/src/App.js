@@ -9,6 +9,7 @@ function App() {
   const [topics, setTopics] = useState([]);
 
   const submitTopic = async () => {
+    const hash = window.location.hash.slice(1);
     const response = await fetch(`${host}api/topics/create`, {
       method: "post",
       headers: {
@@ -16,7 +17,7 @@ function App() {
       },
       body: JSON.stringify({
         markdown: text,
-        parent: "",
+        parent: hash,
       }),
     });
     if (response.status === 200) {
@@ -30,13 +31,15 @@ function App() {
     console.log(text);
   };
 
+  const fetchTopics = async () => {
+    const hash = window.location.hash.slice(1);
+    const response = await fetch(`${host}api/topics/${hash}`);
+    const data = await response.json();
+    setTopics(() => data);
+    console.log(data);
+  };
+
   useEffect(() => {
-    const fetchTopics = async () => {
-      const response = await fetch(`${host}api/topics`);
-      const data = await response.json();
-      setTopics(data);
-      console.log(data);
-    };
     fetchTopics();
   }, []);
 
@@ -67,7 +70,7 @@ function App() {
         submitTopic={submitTopic}
       />
 
-      <Topics topicsList={topics} />
+      <Topics topicsList={topics} fetchTopics={fetchTopics} />
     </div>
   );
 }

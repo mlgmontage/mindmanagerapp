@@ -10,7 +10,7 @@ router.get("/", async (req, res) => {
 
 router.get("/:id", async (req, res) => {
   const _id = req.params.id;
-  const topics = await ds.find({ _id });
+  const topics = await ds.find({ parent: _id });
   res.json(topics);
 });
 
