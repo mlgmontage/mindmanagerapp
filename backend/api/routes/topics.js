@@ -11,7 +11,7 @@ router.get("/", async (req, res) => {
 router.post("/create", async (req, res) => {
   const body = req.body;
 
-  if (!topicSchema.validate(topicSchema).errors) {
+  if (!topicSchema.validate(body).errors) {
     body.Date = new Date().toISOString();
     const created = await ds.insert(body);
     res.json(created);

@@ -1,15 +1,26 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Topics from "./components/Topics";
 import TopicForm from "./components/TopicForm";
-import topicsList from "./data/topics";
+import host from "./host";
 
 function App() {
   const [show, setShow] = useState(true);
   const [text, setText] = useState("");
+  const [topics, setTopics] = useState([]);
 
   const submitTopic = () => {
     console.log(text);
   };
+
+  useEffect(() => {
+    const fetchTopics = async () => {
+      const response = await fetch(`${host}api/topics`);
+      const data = await response.json();
+      setTopics(data);
+      console.log(data);
+    };
+    fetchTopics();
+  }, []);
 
   return (
     <div className="container">
@@ -38,7 +49,7 @@ function App() {
         submitTopic={submitTopic}
       />
 
-      <Topics topicsList={topicsList} />
+      <Topics topicsList={topics} />
     </div>
   );
 }
