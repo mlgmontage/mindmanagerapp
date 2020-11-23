@@ -1,3 +1,5 @@
+import SimpleMDE from "react-simplemde-editor";
+
 function TopicForm(props) {
   return (
     <form
@@ -6,12 +8,10 @@ function TopicForm(props) {
       onSubmit={props.submitTopic}
     >
       <div className="mb-3">
-        <textarea
-          className="form-control"
-          rows="10"
+        <SimpleMDE
           value={props.text}
-          onChange={(e) => props.setText(e.target.value)}
-        ></textarea>
+          onChange={(value) => props.setText(value)}
+        />
       </div>
       <div className="text-center">
         <div
