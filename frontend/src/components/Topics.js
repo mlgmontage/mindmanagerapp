@@ -1,5 +1,6 @@
 import marked from "marked";
 import moment from "moment";
+import { Link } from "react-router-dom";
 
 function Topics(props) {
   return (
@@ -8,9 +9,9 @@ function Topics(props) {
       <div className="list-group">
         {props.topicsList.map((topic) => (
           <div className="list-group-item" key={topic._id}>
-            <a
+            <Link
               className="text-dark text-decoration-none p-3"
-              href={`#${topic._id}`}
+              to={`/${topic._id}`}
               onClick={props.fetchTopics}
             >
               <div
@@ -18,7 +19,7 @@ function Topics(props) {
                   __html: marked(topic.markdown),
                 }}
               ></div>
-            </a>
+            </Link>
             <small className="text-right text-muted">
               {moment(topic.Date).fromNow()}
             </small>
