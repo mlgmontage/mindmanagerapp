@@ -8,7 +8,25 @@ function App() {
   const [text, setText] = useState("");
   const [topics, setTopics] = useState([]);
 
-  const submitTopic = () => {
+  const submitTopic = async () => {
+    const response = await fetch(`${host}api/topics/create`, {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        markdown: text,
+        parent: "",
+      }),
+    });
+    if (response.status === 200) {
+      const created = await response.json();
+      setTopics([created, ...topics]);
+      console.log(created);
+    } else {
+      const body = await response.json();
+      console.log(body);
+    }
     console.log(text);
   };
 

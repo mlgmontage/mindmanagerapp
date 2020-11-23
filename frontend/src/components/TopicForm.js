@@ -3,6 +3,7 @@ function TopicForm(props) {
     <form
       style={{ display: props.show ? "block" : "none" }}
       className="col-md-10 m-auto py-4"
+      onSubmit={props.submitTopic}
     >
       <div className="mb-3">
         <textarea

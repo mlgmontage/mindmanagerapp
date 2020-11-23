@@ -17,12 +17,12 @@ router.get("/:id", async (req, res) => {
 router.post("/create", async (req, res) => {
   const body = req.body;
 
-  if (!topicSchema.validate(body).errors) {
+  if (!topicSchema.validate(body).error) {
     body.Date = new Date().toISOString();
     const created = await ds.insert(body);
     res.json(created);
   } else {
-    res.status(400).json(topicSchema.validate(body).errors.message);
+    res.status(400).json(topicSchema.validate(body).error.message);
   }
 });
 
