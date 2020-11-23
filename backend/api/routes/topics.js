@@ -1,10 +1,10 @@
 const { Router } = require("express");
 const router = Router();
+const ds = require("../../connection");
 
 router.get("/", async (req, res) => {
-  res.json({
-    message: "hello",
-  });
+  const topics = await ds.find({});
+  res.json(topics);
 });
 
 module.exports = router;
