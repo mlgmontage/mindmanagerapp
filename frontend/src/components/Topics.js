@@ -4,8 +4,7 @@ import { Link } from "react-router-dom";
 
 function Topics(props) {
   return (
-    <div className="col-md-9 m-auto">
-      <h3 className="py-3">Topics</h3>
+    <div className="col-md-9 m-auto py-3">
       <div className="list-group">
         {props.topicsList.map((topic) => (
           <div className="list-group-item" key={topic._id}>

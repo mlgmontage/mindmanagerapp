@@ -6,7 +6,7 @@ import { Link, useParams } from "react-router-dom";
 
 function Main() {
   const parent = useParams().parent || "";
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
   const [text, setText] = useState("");
   const [topics, setTopics] = useState([]);
 
@@ -72,6 +72,7 @@ function Main() {
       />
 
       <Topics topicsList={topics} fetchTopics={fetchTopics} />
+      <div className="py-5"></div>
     </div>
   );
 }
