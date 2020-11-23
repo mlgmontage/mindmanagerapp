@@ -1,6 +1,7 @@
 import Main from "./components/Main";
 import { BrowserRouter, Route } from "react-router-dom";
 import "easymde/dist/easymde.min.css";
+import "highlight.js/styles/github.css";
 
 function App() {
   return (

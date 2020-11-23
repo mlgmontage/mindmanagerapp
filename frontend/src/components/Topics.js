@@ -1,6 +1,23 @@
-import marked from "marked";
+import { Remarkable } from "remarkable";
 import moment from "moment";
 import { Link } from "react-router-dom";
+import hljs from "highlight.js";
+
+const md = new Remarkable({
+  highlight: (str, lang) => {
+    if (lang && hljs.getLanguage(lang)) {
+      try {
+        return hljs.highlight(lang, str).value;
+      } catch (err) {}
+    }
+
+    try {
+      return hljs.highlightAuto(str).value;
+    } catch (err) {}
+
+    return ""; // use external default escaping
+  },
+});
 
 function Topics(props) {
   return (
@@ -15,7 +32,7 @@ function Topics(props) {
             >
               <div
                 dangerouslySetInnerHTML={{
-                  __html: marked(topic.markdown),
+                  __html: md.render(topic.markdown),
                 }}
               ></div>
             </Link>
