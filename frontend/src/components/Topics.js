@@ -25,17 +25,19 @@ function Topics(props) {
       <div className="list-group">
         {props.topicsList.map((topic) => (
           <div className="list-group-item" key={topic._id}>
+            <div
+              dangerouslySetInnerHTML={{
+                __html: md.render(topic.markdown),
+              }}
+              className="py-3"
+            ></div>
             <Link
-              className="text-dark text-decoration-none p-3"
+              className="btn btn-light btn-small"
               to={`/${topic._id}`}
               onClick={props.fetchTopics}
             >
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: md.render(topic.markdown),
-                }}
-              ></div>
-            </Link>
+              more
+            </Link>{" "}
             <small className="text-right text-muted">
               {moment(topic.Date).fromNow()}
             </small>
