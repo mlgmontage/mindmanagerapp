@@ -37,6 +37,20 @@ function Main() {
     setTopics(() => data);
   };
 
+  const deleteTopic = async (topic) => {
+    const response = await fetch(`${host}api/topics/${topic._id}`, {
+      method: "delete",
+    });
+    if (response.status === 200) {
+      const topicsTemp = [...topics];
+      const index = topics.indexOf(topic);
+      if (index !== -1) {
+        topicsTemp.splice(index, 1);
+        setTopics(topicsTemp);
+      }
+    }
+  };
+
   useEffect(() => {
     fetchTopics();
     return () => setTopics([]);
@@ -71,7 +85,11 @@ function Main() {
         submitTopic={submitTopic}
       />
 
-      <Topics topicsList={topics} fetchTopics={fetchTopics} />
+      <Topics
+        topicsList={topics}
+        fetchTopics={fetchTopics}
+        deleteTopic={deleteTopic}
+      />
       <div className="py-5"></div>
     </div>
   );

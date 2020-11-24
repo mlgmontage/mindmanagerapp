@@ -41,6 +41,13 @@ function Topics(props) {
             <small className="text-right text-muted">
               {moment(topic.Date).fromNow()}
             </small>
+            <small
+              onClick={() => props.deleteTopic(topic)}
+              className="text-right px-3"
+              style={{ cursor: "pointer" }}
+            >
+              <i className="fa fa-trash-o"></i>
+            </small>
           </div>
         ))}
       </div>
